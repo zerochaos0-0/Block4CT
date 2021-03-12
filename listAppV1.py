@@ -11,25 +11,25 @@ Program Goals:
 import random
 myList = []
 
-
 def mainProgram():
     while True:
-        print("Hello, there! Let's work with lists!")
-        print("Choose one of the following opitons. Type a number ONLY!")
-        choice = input("""1. Add to list,
-2. Return the value at an index position,
-3. Generate a random number from the list
-4. End the program   """)
-        if choice == "1":
-            addToList()
-        elif choice == "2":
-            indexValues()
-        elif choice == "4":
-            break
-        elif choice == "3":
-            randomSearch()
-    #we need to add an exit program as well as error catching
-
+        try:
+            print("Hello, there! Let's work with lists!")
+            print("Choose one of the following opitons. Type a number ONLY!")
+            choice = input("""1. Add to list,
+    2. Return the value at an index position,
+    3. Generate a random number from the list,
+    4. End the program   """)
+            if choice == "1":
+                addToList()
+            elif choice == "2":
+                indexValues()
+            elif choice == "3":
+                randomSearch()
+            else:
+                break
+        except:
+            print("An error occurred.")
         
 def addToList():
     print("Okay, you want to add to your list!")
