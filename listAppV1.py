@@ -11,13 +11,14 @@ Program Goals:
 import random
 import time
 myList = []
+unique_list = []
 
 
 def mainProgram():
     while True:
         try:
             print("So you wanna make a number list? Alright bet let's get to it!")
-            time.sleep(1.5)
+            time.sleep(1)
             print("Kindly choose one of the following options. Make sure you only type a number!")
             time.sleep(1.5)
             choice = input("""
@@ -26,8 +27,9 @@ def mainProgram():
 3. Return the value at an index position,
 4. Generate a random number from the list, 
 5. Search your list for a specific number,
-6. Print your current list,
-7. End the program   """)
+6. Sort your list,
+7. Print your list,
+8. End the program   """)
             if choice == "1":
                 addToList()
             elif choice == "2":
@@ -36,10 +38,12 @@ def mainProgram():
                 indexValues()
             elif choice == "4":
                 randomSearch()
-            elif choice == "6":
-                print(myList)
             elif choice == "5":
-                linearSearch()
+                linearSearch()  
+            elif choice == "6":
+                sortList(myList)
+            elif choice == "7":
+                printLists()
             else:
                 break
         except:
@@ -51,12 +55,14 @@ def addToList():
     newItem = input("What interger would you like to add?  ")
     myList.append(int(newItem))
     readList = input("Would you like to see your new list? y/n?  ")
-    if readList == "y":
+    if readList.lower() == "y":
         print("No problem, here ya go!")
         time.sleep(1.5)
         print(myList)
-    elif readList == "n":
+        time.sleep(3)
+    elif readList.lower() == "n":
         print("That's all good dude. ")
+        time.sleep(1.5)
 
 
 def addABunch():
@@ -70,12 +76,27 @@ def addABunch():
         myList.append(random.randint(0,int(numRange)))
     print("Your list is now complete!")
     readList = input("Would you like to see your new list? y/n?  ")
-    if readList == "y":
+    if readList.lower() == "y":
         print("No problem, here ya go!")
         time.sleep(1.5)
         print(myList)
-    elif readList == "n":
+        time.sleep(3)
+    elif readList.lower() == "n":
         print("That's all good dude. ")
+        time.sleep(1.5)
+
+def sortList(myList):
+    for x in myList:
+        if x not in unique_list:
+            unique_list.append(x)
+    unique_list.sort()
+    showMe = ("Would you like to see your new list? y/n?  ")
+    if showMe.lower() == "y":
+        print("No problem, here ya go!")
+        time.sleep(1.5)
+        print(unique_list)
+        time.sleep(3)
+
 
 def indexValues():
     indexPos = input("Which index position would you like to know?  ")
@@ -99,6 +120,14 @@ def linearSearch():
             indexCount = indexCount + 1
             print("Your item is at index {}".format(x))
     print("Your number appeared {} times in the list".format(indexCount))
+
+def printLists():
+    if len(uniques_list) == 0:
+        print(myList)
+    else:
+        whichOne = input("Which list? Sorted or un-sorted?   ")
+        if whichOne.lower() == "sorted":
+            print(unique_list)
 
 
 if __name__ == "__main__":
