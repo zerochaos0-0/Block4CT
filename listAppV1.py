@@ -22,8 +22,8 @@ def mainProgram():
             print("Kindly choose one of the following options. Make sure you only type a number!")
             time.sleep(1.5)
             choice = input("""
-1. Add individual integers to your list,
-2. Add multiple integers to your list,
+1. Add individual numbers to your list,
+2. Add multiple numbers to your list,
 3. Return the value at an index position,
 4. Generate a random number from the list, 
 5. Search your list for a specific number,
@@ -32,22 +32,31 @@ def mainProgram():
 8. End the program   """)
             if choice == "1":
                 addToList()
+                time.sleep(.5)
             elif choice == "2":
                 addABunch()
+                time.sleep(.5)
             elif choice == "3":
                 indexValues()
+                time.sleep(.5)
             elif choice == "4":
                 randomSearch()
+                time.sleep(.5)
             elif choice == "5":
-                linearSearch()  
+                linearSearch()
+                time.sleep(.5)
             elif choice == "6":
                 sortList(myList)
+                time.sleep(.5)
             elif choice == "7":
                 printLists()
+                time.sleep(.5)
             else:
                 break
         except:
             print("Woah there bud, that's not a number.")
+            time.sleep(2)
+
         
 def addToList():
     print("Okay, you want to add to your list!")
@@ -96,6 +105,9 @@ def sortList(myList):
         time.sleep(1.5)
         print(unique_list)
         time.sleep(3)
+    elif showMe.lower() == "n":
+        ("That's all good dude. ")
+        time.sleep(1.5)
 
 
 def indexValues():
@@ -104,30 +116,55 @@ def indexValues():
     print("Here you are...")
     time.sleep(1)
     print(myList[int(indexPos)])
+    time.sleep(2)
 
 def randomSearch():
     print("Here's a random value from your list!")
     time.sleep(1.5)
     print(myList[random.randint(0, len(myList)-1)])
+    time.sleep(2)
+
 
 def linearSearch():
-    print("We're going to search through the list in the WORST WAY POSSIBLE!")
+    print("Okay, let's search your list!")
     time.sleep(1.5)
-    searchItem = input("What are you looking for? Number-wise?  ")
+    searchItem = input("What are number would you like to find?  ")
+    print("Coming right up!")
+    time.sleep(1)
+    print("Searching...")
+    time.sleep(2)
+    print("Search Complete!")
+    time.sleep(1)
     indexCount = 0
     for x in range(len(myList)):
         if myList[x] == int(searchItem):
             indexCount = indexCount + 1
             print("Your item is at index {}".format(x))
     print("Your number appeared {} times in the list".format(indexCount))
+    time.sleep(2)
+
+def recursiveBinarySearch(unique_list, low, high, x):
+    if high >= low:
+        mid = (high + low) // 2
+        
+        if unique_list[mid] == x:
+            print("Oh, what luck! Your number is at position {}".format(mid))
+        elif unique_list[mid] > x:
+            return recursiveBinarySearch(unique_list, low, mid - 1, x)
+        else:
+            return recursiveBinarySearch(unique_list, mid + 1, high, x)
+    else:
+        print("Your number isn't here!")
 
 def printLists():
     if len(uniques_list) == 0:
         print(myList)
+        time.sleep(1.5)
     else:
         whichOne = input("Which list? Sorted or un-sorted?   ")
         if whichOne.lower() == "sorted":
             print(unique_list)
+            time.sleep(1.5)
 
 
 if __name__ == "__main__":
