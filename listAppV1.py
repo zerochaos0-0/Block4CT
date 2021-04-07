@@ -16,47 +16,57 @@ unique_list = []
 
 def mainProgram():
     while True:
-        try:
-            print("So you wanna make a number list? Alright bet let's get to it!")
-            time.sleep(1)
-            print("Kindly choose one of the following options. Make sure you only type a number!")
-            time.sleep(1.5)
-            choice = input("""
+        print("So you wanna make a number list? Alright bet let's get to it!")
+        time.sleep(1)
+        print("Kindly choose one of the following options. Make sure you only type a number!")
+        time.sleep(1.5)
+        choice = input("""
 1. Add individual numbers to your list,
 2. Add multiple numbers to your list,
 3. Return the value at an index position,
 4. Generate a random number from the list, 
 5. Search your list for a specific number,
-6. Sort your list,
-7. Print your list,
-8. End the program   """)
-            if choice == "1":
-                addToList()
-                time.sleep(.5)
-            elif choice == "2":
-                addABunch()
-                time.sleep(.5)
-            elif choice == "3":
-                indexValues()
-                time.sleep(.5)
-            elif choice == "4":
-                randomSearch()
-                time.sleep(.5)
-            elif choice == "5":
-                linearSearch()
-                time.sleep(.5)
-            elif choice == "6":
-                sortList(myList)
-                time.sleep(.5)
-            elif choice == "7":
-                printLists()
+6. Recursive Binary Search,
+7. Iterative Binary Search,
+8. Sort your list, 
+9. Print your list,
+10. End the program   """)
+        if choice == "1":
+            addToList()
+            time.sleep(.5)
+        elif choice == "2":
+            addABunch()
+            time.sleep(.5)
+        elif choice == "3":
+            indexValues()
+            time.sleep(.5)
+        elif choice == "4":
+            randomSearch()
+            time.sleep(.5)
+        elif choice == "5":
+            linearSearch()
+            time.sleep(.5)
+        elif choice == "6":
+            binSearch = input("What number are you looking for?  ")
+            recursiveBinarySearch(unique_list, 0, len(unique_list)-1, int(binSearch))
+            time.sleep(.5)
+        elif choice == "7":
+            binSearch = input("What number are you looking for?  ")
+            result = iterativeBinarySearch(unique_list, int(binSearch))
+            if result != -1:
+                print("Your number is at index position {}".format(result))
                 time.sleep(.5)
             else:
-                break
-        except:
-            print("Woah there bud, that's not a number.")
-            time.sleep(2)
-
+                print("Your number is not found in that list my guy!")
+                time.sleep(.5)
+        elif choice == "8":
+            sortList(myList)
+            time.sleep(.5)
+        elif choice == "9":
+            printLists()
+            time.sleep(.5)
+        else:
+            break
         
 def addToList():
     print("Okay, you want to add to your list!")
@@ -99,7 +109,7 @@ def sortList(myList):
         if x not in unique_list:
             unique_list.append(x)
     unique_list.sort()
-    showMe = ("Would you like to see your new list? y/n?  ")
+    showMe = input("Would you like to see your new list? y/n?  ")
     if showMe.lower() == "y":
         print("No problem, here ya go!")
         time.sleep(1.5)
@@ -149,12 +159,34 @@ def recursiveBinarySearch(unique_list, low, high, x):
         
         if unique_list[mid] == x:
             print("Oh, what luck! Your number is at position {}".format(mid))
+            return mid
+
         elif unique_list[mid] > x:
             return recursiveBinarySearch(unique_list, low, mid - 1, x)
+        
         else:
             return recursiveBinarySearch(unique_list, mid + 1, high, x)
     else:
         print("Your number isn't here!")
+
+def iterativeBinarySearch(unique_list, x):
+    low = 0
+    high = len(unique_list)-1
+    mid = 0
+
+    while low <= high:
+        mid = (high + low) // 2
+
+        if unique_list[mid] < x:
+            low = mid + 1
+
+        elif unique_list[mid] > x:
+            high = mid - 1
+
+        else:
+            return mid
+    return -1
+
 
 def printLists():
     if len(uniques_list) == 0:
