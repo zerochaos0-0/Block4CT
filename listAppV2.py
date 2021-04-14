@@ -38,7 +38,7 @@ def mainMenu():
         elif choice == "3":
             printLists()
             time.sleep(1)
-        else:
+        elif choice == "4":
             print("We're very sad to see you go, and hope you have a great day.")
             break
             
@@ -64,11 +64,23 @@ def searchMenu():
         time.sleep(1)
     elif searchMenus == "4":
         binSearch = input("What number are you looking for?  ")
+        print("Coming right up!")
+        time.sleep(1)
+        print("Searching...")
+        time.sleep(2)
+        print("Search Complete!")
+        time.sleep(1)
         recursiveBinarySearch(unique_list, 0, len(unique_list)-1, int(binSearch))
         time.sleep(.5)
     elif searchMenus == "5":
         binSearch = input("What number are you looking for?  ")
         result = iterativeBinarySearch(unique_list, int(binSearch))
+        print("Coming right up!")
+        time.sleep(1)
+        print("Searching...")
+        time.sleep(2)
+        print("Search Complete!")
+        time.sleep(1)
         if result != -1:
             print("Your number is at index position {}".format(result))
             time.sleep(.5)
@@ -194,12 +206,6 @@ def linearSearch():
     time.sleep(2)
 
 def recursiveBinarySearch(unique_list, low, high, x):
-    print("Coming right up!")
-    time.sleep(1)
-    print("Searching...")
-    time.sleep(2)
-    print("Search Complete!")
-    time.sleep(1)
     if high >= low:
         mid = (high + low) // 2
         
@@ -216,12 +222,6 @@ def recursiveBinarySearch(unique_list, low, high, x):
         print("Your number isn't here!")
 
 def iterativeBinarySearch(unique_list, x):
-    print("Coming right up!")
-    time.sleep(1)
-    print("Searching...")
-    time.sleep(2)
-    print("Search Complete!")
-    time.sleep(1)
     low = 0
     high = len(unique_list)-1
     mid = 0
