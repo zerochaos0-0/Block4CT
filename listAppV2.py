@@ -1,5 +1,4 @@
 """
-
 Program Goals:
 1. Get the input from the user
 2. Convert that input to an int
@@ -14,14 +13,12 @@ myList = []
 unique_list = []
 
 """
-
 This is the main function of the program that greets the user,
 providing them with the options of which menu they would like to choose from.
 They may either be sent to the search menu, the edit menu, print their list,
 or leave the program, which is done using if/elif/else statements,
 which send the user to the accompanied functions. This is all done in a while loop,
 so the user always returns to the main menu when they are done with each action.
-
 """
 
 def mainMenu():
@@ -53,7 +50,6 @@ def mainMenu():
             break
      
 """
-
 This function works by first being called in the mainMenu() function when the user
 chooses to go to the search menu. Under this function, the user is provided with a
 variety of options to search their list, though first the list must of course have
@@ -61,7 +57,6 @@ items stored in it. When the user enters the searchMenu() function, they are
 confronted with five search options, a classic linear search, a random search,
 index search, as well as iterative and recursive binary searches, all of which
 work in their own respective functions.
-
 """
        
 def searchMenu():
@@ -115,14 +110,11 @@ def searchMenu():
         time.sleep(1)
 
 """
-
 Like the searchMenu() function, the editMenu() function is called in the
 mainMenu() function when the program asks the user where they would like to go.
 This function provides the user with a limited choice of options of ways to
 edit their list, they can either add to their list or clear their list,
 both options work in their own respective functions.  
-
-
 """
 
 def editMenu():
@@ -145,7 +137,6 @@ def editMenu():
         time.sleep(1)
 
 """
-
 This function works by first asking the user if they would like to add individual
 numbers to their list or if they would like to add multiple numbers.
 Based on the user’s input they are either moved to the addABunch() function,
@@ -153,8 +144,6 @@ or they stay in the addToList() function. If the user stays in the addToList() f
 they are then asked how mant individual numbers they would like to add.
 This information is transferred from string form to integer form and
 the user is sent to the multipleIndividuals() function.
-
-
 """
 
 def addToList():
@@ -172,7 +161,6 @@ def addToList():
         time.sleep(.5)
 
 """
-
 This function works by first being called in the addToList() function,
 where the user makes the choice if they would like to add numbers individually
 or multiple at a time, if the user chooses to add multiple numbers, they’re sent here! 
@@ -187,8 +175,6 @@ the program asks the user if they would like their list sorted before it is prin
 If the user wants their list printed as is, without sorting, the program does so,
 however if they would like their list to be sorted, they are then moved
 to the sortList() function. 
-
-
 """
 
 def addABunch():
@@ -217,7 +203,6 @@ def addABunch():
         time.sleep(1)            
 
 """
-
 This function works by first being called in the addABunch() and multipleIndividuals()
 functions, when the user chooses to have their list sorted.
 Using a for loop and a second list called unique_list, the program checks each number
@@ -226,8 +211,6 @@ that number is disregarded and the program moves onto the next number. However,
 if the number is not in unique_list, the program then adds that number to
 unique_list using the .append method. Finally, after the program has ran
 through every number in myList, it prints unique_list to the user.
-
-
 """
 
 def sortList(myList):
@@ -240,13 +223,11 @@ def sortList(myList):
     time.sleep(1)
 
 """
-
 This function works by first being called in the searchMenu() function,
 when the user chooses to search a specific index position of their list.
 The program takes the integer verison of the user’s input of what
 position in their list they would like to search and uses to then
 print that position from myList.
-
 """
 
 def indexValues():
@@ -259,13 +240,11 @@ def indexValues():
     time.sleep(1)
 
 """
-
 This function works by first being called in the searchMenu() function,
 when the user chooses to generate a random number from their list.
 The program uses the len() function to find out how many objects are
 in myList, and uses the .randint method to randomly select
 one of those objects and returns the chosen number to the user.
-
 """
 
 def randomSearch():
@@ -279,7 +258,6 @@ def randomSearch():
     time.sleep(1)      
 
 """
-
 This functions works by first being called in the searchMenu() function,
 when the user chooses to search their list for a specific number.
 The user is asked what number they would like to search their list for,
@@ -289,7 +267,6 @@ and returns it to the user. Finally, it tallies up how many times that
 number appears in the list and returns that information to the user.
 It does this by making indexCount equal to zero, and each time that number
 is found in the list, the program adds one to indexCount.
-
 """
 
 def linearSearch():
@@ -311,14 +288,12 @@ def linearSearch():
     time.sleep(2)
 
 """
-
 This function works by first being called in the searchList() function,
 when the user chooses to recursively search their list. Using the arguments
 unique_list, low, high, and x, the function recursively widdles the list down
 using the highest, lowest, and middle points in the list until the mid point
 is equal to the number that the user is looking for, as long as that number appears
 in unique_list.
-
 """
 
 def recursiveBinarySearch(unique_list, low, high, x):
@@ -338,14 +313,12 @@ def recursiveBinarySearch(unique_list, low, high, x):
         print("Your number isn't here!")
 
 """
-
 This function works by first being called in the searchList() function,
 when the user chooses to iteratively search their list. Using the arguments
 unique_list, low, high, and x, the function widdles the list down
 using the highest, lowest, and middle points in the list until the mid point
 is equal to the number that the user is looking for, as long as that number appears
 in unique_list.
-
 """
 
 def iterativeBinarySearch(unique_list, x):
@@ -367,7 +340,6 @@ def iterativeBinarySearch(unique_list, x):
     return -1
 
 """
-
 This function works by first being called in the mainMenu() function,
 when the user chooses to print their list(s). The program uses the len()
 function to check if there are any numbers in unique_list, if not,
@@ -376,8 +348,6 @@ then the program asks the user if they would like their sorted list printed
 or their unsorted list printed. If they want their sorted list printed,
 then the program prints unique_list, however if they want their sorted
 list printed the program prints myList.
-
-
 """
 
 def printLists():
@@ -391,7 +361,7 @@ def printLists():
             time.sleep(1.5)
         elif whichOne.lower() == "unsorted":
             print(myList)
-            time.sleep(1.
+            time.sleep(1.5)
 
 """
 
